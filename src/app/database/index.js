@@ -3,8 +3,9 @@ const databaseConfig = require('../../config/database');
 
 //todos os models
 const User = require('../models/User');
+const Address = require('../models/Address');
 
-const models = [User];
+const models = [User, Address];
 
 class Database {
     constructor() {
@@ -14,9 +15,8 @@ class Database {
     init() {
         this.connection = new Sequelize(databaseConfig);
 
-        models
-            .map(model => model.init(this.connection))
-            //.map(model => model.associate && model.associate(this.connection.models))
+        models.map(model => model.init(this.connection));
+        models.map(model => model.associate && model.associate(this.connection.models));
     }
 }
 
