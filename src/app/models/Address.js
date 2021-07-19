@@ -17,8 +17,6 @@ class Address extends Model {
 
     static associate(models) {
         this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user'});
-        //caso seja n para n
-        //this.belongsToMany(models.User, { foreignKey: 'id_da_chave_secundaria', through: 'nome_da_tabela_que_liga_n_para_n', as: 'aplido'});
     }
 }
 

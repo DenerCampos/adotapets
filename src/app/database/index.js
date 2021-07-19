@@ -4,8 +4,12 @@ const databaseConfig = require('../../config/database');
 //todos os models
 const User = require('../models/User');
 const Address = require('../models/Address');
+const Tutor = require('../models/Tutor');
+const Personality = require('../models/Personality');
+const Pet = require('../models/Pet');
+const Photo = require('../models/Photo');
 
-const models = [User, Address];
+const models = [User, Address, Tutor, Personality, Pet, Photo];
 
 class Database {
     constructor() {

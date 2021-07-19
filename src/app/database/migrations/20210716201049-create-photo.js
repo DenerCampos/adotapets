@@ -2,49 +2,30 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pets', {
+    return queryInterface.createTable('photos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.DataTypes.INTEGER,
       },
-      user_id: {
+      pet_id: {
         allowNull: false,
         type: Sequelize.DataTypes.INTEGER,
         references: {
-          model: 'users', key: 'id'
+          model: 'pets', key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelite: 'CASCADE'
       },
-      tutor_id: {
-        type: Sequelize.DataTypes.INTEGER,
-        references: {
-          model: 'tutors', key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelite: 'CASCADE'
-      },
-      name: {
+      path: {
         allowNull: false,
         type: Sequelize.DataTypes.STRING,
       },
-      age: {
-        type: Sequelize.DataTypes.INTEGER,
-      },
-      gender: {
-        type: Sequelize.DataTypes.STRING,
-      },
-      description: {
-        type: Sequelize.DataTypes.STRING(2000),
-      },
-      adopted: {
+      main: {
+        allowNull: false,
+        default: 0,
         type: Sequelize.DataTypes.BOOLEAN,
-        defaultValue: 0,
-      },
-      adopted_at: {
-        type: Sequelize.DataTypes.DATE,
       },
       created_at: {
         allowNull: false,
@@ -61,6 +42,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('pets');
+    return queryInterface.dropTable('photos');
   }
 };
